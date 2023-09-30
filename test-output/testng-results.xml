@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-10-01T04:12:37 IST" name="Default suite" finished-at="2023-10-01T04:12:39 IST" duration-ms="1750">
+    <groups>
+    </groups>
+    <test started-at="2023-10-01T04:12:37 IST" name="Default test" finished-at="2023-10-01T04:12:39 IST" duration-ms="1750">
+      <class name="com.dk.api.SerializeTest">
+        <test-method signature="SerializationTest()[pri:0, instance:com.dk.api.SerializeTest@1bd4fdd]" started-at="2023-10-01T04:12:37 IST" name="SerializationTest" finished-at="2023-10-01T04:12:39 IST" duration-ms="1716" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SerializationTest -->
+      </class> <!-- com.dk.api.SerializeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
