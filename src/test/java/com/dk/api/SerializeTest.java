@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class SerializeTest {
 
-	@Test
+	@Test(priority = 1)
 	public void SerializationTest() {
 		RestAssured.baseURI="http://localhost:3000/google";
 		
@@ -44,6 +44,15 @@ public class SerializeTest {
 				//.log().all();
 		String response=res.asString();
 		System.out.println(response);
+		//Response is not getting
 		
+	}
+	@Test(priority = 2)
+	public void getdetails() {
+		
+		given()
+		.when().get("http://localhost:3000/google")
+		.then().statusCode(200)
+		.log().all();
 	}
 }
