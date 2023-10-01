@@ -62,6 +62,16 @@ public class AddPlace {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+	@Override
+	public String toString() {
+		return "AddPlace [location=" + location + ", accuracy=" + accuracy + ", name=" + name + ", phone_number="
+				+ phone_number + ", address=" + address + ", types=" + types + ", website=" + website + ", language="
+				+ language + ", getLocation()=" + getLocation() + ", getAccuracy()=" + getAccuracy() + ", getName()="
+				+ getName() + ", getPhone_number()=" + getPhone_number() + ", getAddress()=" + getAddress()
+				+ ", getTypes()=" + getTypes() + ", getWebsite()=" + getWebsite() + ", getLanguage()=" + getLanguage()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	
 	
 }

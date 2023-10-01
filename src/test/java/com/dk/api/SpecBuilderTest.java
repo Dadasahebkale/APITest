@@ -6,7 +6,13 @@ import com.dk.pojo.AddPlace;
 import com.dk.pojo.Location;
 
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matcher.*;
@@ -14,7 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import java.util.ArrayList;
 import java.util.List;
-public class SerializeTest {
+public class SpecBuilderTest {
 
 	@Test(priority = 1)
 	public void SerializationTest() {
@@ -36,24 +42,29 @@ public class SerializeTest {
 		l.setLan(73.912239);
 		l.setLat(18.566526);
 		ap.setLocation(l);
+	RequestSpecification req=new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").addQueryParam("key", "qaclick123")
+		.setContentType(ContentType.JSON).build();
 		
-		Response res=given().log().all().queryParam("key", "qaclick123")
-				.body(ap)
-				.when()
+		ResponseSpecification resspec=new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+		
+		
+		RequestSpecification res=given().spec(req)
+				.body(ap);
+			Response response=res.when()
 				.post("/maps/api/place/add/json")
-				.then().statusCode(200).extract().response();
+				.then().spec(resspec).extract().response();
 				//.log().all();
-		String response=res.asString();
-		System.out.println(response);
+		String responseString=response.asString();
+		System.out.println(responseString);
 		//Response is not getting
 		
 	}
-	@Test(priority = 2)
-	public void getdetails() {
-		
-		given()
-		.when().get("http://localhost:3000/google")
-		.then().statusCode(200)
-		.log().all();
-	}
+//	@Test(priority = 2)
+//	public void getdetails() {
+//		
+//		given()
+//		.when().get(basePath)
+//		.then().statusCode(200)
+//		.log().all();
+//	}
 }
